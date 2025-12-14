@@ -1,6 +1,16 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { authClient } from "@/lib/auth-client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -19,7 +29,6 @@ type ReviewWithUser = Prisma.ReviewGetPayload<{
 function UlasanSession() {
 	const [ratingFilter, setRatingFilter] = useState("all");
 	const session = authClient.useSession();
-	const queryClient = useQueryClient();
 
 	const {
 		data: reviews,
@@ -30,16 +39,6 @@ function UlasanSession() {
 		queryFn: async () => {
 			const response = await axios.get("/api/ulasan");
 			return response.data;
-		},
-	});
-
-	const deleteReview = useMutation({
-		mutationFn: async (id: string) => {
-			const res = await axios.delete<Review>(`/api/ulasan?id=${id}`);
-			return res.data;
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries({ queryKey: ["ulasan"] });
 		},
 	});
 
@@ -62,7 +61,7 @@ function UlasanSession() {
 			)}
 
 			{/* loading state */}
-			<div className="items-center grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-3">
+			<div className="items-center grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
 				{loading && (
 					<React.Fragment>
 						<Skeleton className="w-full h-[150px]" />
@@ -80,19 +79,18 @@ function UlasanSession() {
 								: item.rating === Number(ratingFilter)
 						)
 						.map((item: ReviewWithUser) => (
-							<Card key={item.id} className="border-primary/20">
-								<CardContent>
+							<Card key={item.id} className="border-primary/20 h-full">
+								<CardContent className="flex flex-col justify-between h-full">
 									<div className="flex items-center justify-between">
-										<h3 className="font-semibold">{item.user.name}</h3>
+										<h3 className="font-semibold">
+											{item.user.name}
+											{item.user.id === session.data?.user.id && (
+												<span className="text-primary font-normal">{` ( Anda )`}</span>
+											)}
+										</h3>
 										{item.userId === session.data?.user.id && (
 											<div className="space-x-1.5">
-												<Button
-													size={"icon-sm"}
-													variant={"outline"}
-													className="w-7 h-7"
-													onClick={() => deleteReview.mutate(item.id)}>
-													<TrashIcon />
-												</Button>
+												<DeleteDialog item={item} />
 											</div>
 										)}
 									</div>
@@ -106,12 +104,16 @@ function UlasanSession() {
 										))}
 									</div>
 
-									<p className="text-sm text-muted-foreground mt-1">
+									<p className="text-sm text-primary my-2.5 wrap-break-word whitespace-pre-wrap">
 										{item.pesan}
 									</p>
 
-									<p className="text-xs text-muted-foreground mt-2">
-										{new Date(item.createdAt).toLocaleString("id-ID")}
+									<p className="text-xs text-muted-foreground mt-auto">
+										{new Date(item.createdAt).toLocaleDateString("id-ID", {
+											day: "2-digit",
+											month: "long",
+											year: "numeric",
+										})}
 									</p>
 								</CardContent>
 							</Card>
@@ -120,5 +122,48 @@ function UlasanSession() {
 		</div>
 	);
 }
+
+const DeleteDialog = ({ item }: { item: ReviewWithUser }) => {
+	const queryClient = useQueryClient();
+
+	const { mutate: deleteReview, isPending } = useMutation({
+		mutationFn: async (id: string) => {
+			const res = await axios.delete<Review>(`/api/ulasan?id=${id}`);
+			return res.data;
+		},
+		onSuccess: () => {
+			queryClient.invalidateQueries({ queryKey: ["ulasan"] });
+		},
+	});
+	return (
+		<Dialog>
+			<DialogTrigger asChild>
+				<Button size={"icon-sm"} variant={"outline"} className="w-7 h-7">
+					<TrashIcon />
+				</Button>
+			</DialogTrigger>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>Apa kamu yakin ingin menghapus komentar mu?</DialogTitle>
+					<DialogDescription>
+						<p className="break-all whitespace-pre-wrap">
+							Hapus komentar{"\n\n"}
+							<span className="font-semibold text-primary">{`"${item.pesan}"`}</span>
+							, {`\n\nrating ${item.rating}`}
+						</p>
+					</DialogDescription>
+				</DialogHeader>
+				<DialogFooter className="justify-end">
+					<DialogClose asChild>
+						<Button variant={"outline"}>Batal</Button>
+					</DialogClose>
+					<Button onClick={() => deleteReview(item.id)} disabled={isPending}>
+						{isPending ? "Menghapus..." : "Hapus"}
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
+	);
+};
 
 export default UlasanSession;

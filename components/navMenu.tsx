@@ -58,13 +58,13 @@ function NavMenu() {
 
 	return (
 		<div className="flex flex-row items-center gap-3 md:gap-0">
-			<div className="hidden md:flex items-center justify-between gap-3 mr-4">
+			<div className="hidden md:flex items-center justify-between gap-5 mr-4">
 				{MenuItem.map((item) => {
 					return (
 						<Link
 							href={`${item?.link}`}
 							key={item?.nama}
-							className="text-primary/70 hover:text-primary font-semibold">
+							className="hover:text-primary font-semibold">
 							{item?.nama}
 						</Link>
 					);
@@ -83,7 +83,7 @@ function NavMenu() {
 									href={`${item?.link}`}
 									key={item?.nama}
 									onClick={() => setOpenDrawer(false)}
-									className="text-primary/70 hover:text-primary transition py-1.5">
+									className="hover:text-primary transition py-1.5">
 									{item?.nama}
 								</Link>
 							);

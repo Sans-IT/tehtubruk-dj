@@ -17,8 +17,8 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 
 #### landing page home
 
-- [ ] header hero section
-- [ ] kenapa memilih teh tubruk
+- [x] header hero section
+- [x] kenapa memilih teh tubruk
 - [ ] cabang
 - [ ] apa kata pelanggan
 - [ ] CTA whatsapp
@@ -46,7 +46,7 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 
 #### cabang
 
-- [ ] tombol arah gmap lokasi dan no telp ( jika ada )
+- [x] tombol arah gmap lokasi dan no telp ( jika ada )
 
 #### mitra/franchise
 
@@ -54,7 +54,7 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 
 # back end
 
-- [ ] konfigurasi prisma postgresql
-- [ ] better auth ( google )
-- [ ] penyelesaian database ulasan
-- [ ] middleware
+- [x] konfigurasi prisma postgresql
+- [x] better auth ( google )
+- [x] penyelesaian database ulasan
+- [x] middleware

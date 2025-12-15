@@ -26,7 +26,7 @@ type ReviewWithUser = Prisma.ReviewGetPayload<{
 	};
 }>;
 
-function UlasanSession() {
+function UlasanSection() {
 	const [ratingFilter, setRatingFilter] = useState("all");
 	const session = authClient.useSession();
 
@@ -42,17 +42,57 @@ function UlasanSession() {
 		},
 	});
 
+	const averageRating = React.useMemo(() => {
+		if (!reviews || reviews.length === 0) return 0;
+
+		const total = reviews.reduce(
+			(sum: number, item: Review) => sum + item.rating,
+			0
+		);
+
+		return total / reviews.length;
+	}, [reviews]);
+
+	const ratingCount = React.useMemo(() => {
+		if (!reviews) return {};
+
+		return reviews.reduce((acc: Record<number, number>, item: Review) => {
+			acc[item.rating] = (acc[item.rating] || 0) + 1;
+			return acc;
+		}, {});
+	}, [reviews]);
+
 	return (
 		<div className="space-y-3">
 			<div className="flex items-center justify-between">
 				<h2 className="text-2xl font-semibold">Ulasan Terbaru</h2>
-				<RatingSelect value={ratingFilter} onChange={setRatingFilter} />
+				<RatingSelect
+					ratingCount={ratingCount}
+					value={ratingFilter}
+					onChange={setRatingFilter}
+				/>
 			</div>
 
-			<p>
-				Total ulasan yang diberikan{" : "}
-				<span className="font-semibold">{reviews?.length ?? ""}</span>
-			</p>
+			<div className="flex items-center gap-3">
+				<span className="text-3xl font-bold">{averageRating.toFixed(1)}</span>
+				<div className="flex flex-col">
+					<div className="flex">
+						{Array.from({ length: 5 }).map((_, i) => (
+							<Star
+								key={i}
+								className={`w-4 h-4 ${
+									i < Math.round(averageRating)
+										? "fill-yellow-400 text-yellow-400"
+										: "text-muted-foreground"
+								}`}
+							/>
+						))}
+					</div>
+					<span className="text-sm text-muted-foreground">
+						Dari {reviews?.length} ulasan
+					</span>
+				</div>
+			</div>
 
 			{!loading && reviews.length === 0 && (
 				<p className="text-center py-5">
@@ -123,6 +163,7 @@ function UlasanSession() {
 	);
 }
 
+// delete komen
 const DeleteDialog = ({ item }: { item: ReviewWithUser }) => {
 	const queryClient = useQueryClient();
 
@@ -166,4 +207,4 @@ const DeleteDialog = ({ item }: { item: ReviewWithUser }) => {
 	);
 };
 
-export default UlasanSession;
+export default UlasanSection;

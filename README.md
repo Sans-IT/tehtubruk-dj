@@ -2,6 +2,13 @@
 
 website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercinta
 
+## konfigurasi
+
+- nextjs 16
+- autentikasi ( better auth )
+- ORM ( prisma )
+- schema ( postgresql )
+
 ## fitur
 
 - memberikan ulasan ( komentar )
@@ -22,27 +29,24 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 - [ ] cabang
 - [ ] apa kata pelanggan
 - [ ] CTA whatsapp
+- [ ] animasi / percantik UI
 
 #### tentang
 
-- [ ] pendahuluan
-- [ ] visi misi
+- [x] pendahuluan
+- [x] visi misi
 
 #### menu varian
 
-- [ ] menu teh sashet
-- [ ] menu teh bubuk
+- [x] menu teh sashet
+- [x] menu teh bubuk
 
 #### ulasan
 
 - [x] rating
 - [x] input user
 - [x] sesi komentar
-
-#### order
-
-- [ ] menu varian beserta harganya
-- [ ] CTA whatsapp
+- [ ] CTA WhatsApp
 
 #### cabang
 

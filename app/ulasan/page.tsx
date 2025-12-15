@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import UlasanForm from "./ulasan-form";
 import MaxWidthDiv from "@/components/maxWidthDiv";
-import UlasanSession from "./ulasan-session";
+import UlasanSession from "./ulasan-section";
 
 export default function PageUlasan() {
 	return (

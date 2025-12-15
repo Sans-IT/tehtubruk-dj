@@ -18,34 +18,33 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import { usePathname } from "next/navigation";
+import { CartSheet } from "./cart-sheet";
 
 const MenuItem = [
 	{
 		nama: "Tentang",
-		link: "/tentang",
+		link: "tentang",
 	},
 	{
 		nama: "Menu",
-		link: "/menu",
+		link: "menu",
 	},
 	{
 		nama: "Ulasan",
-		link: "/ulasan",
+		link: "ulasan",
 	},
 	,
 	{
-		nama: "Order",
-		link: "/order",
-	},
-	{
 		nama: "Cabang",
-		link: "/cabang",
+		link: "cabang",
 	},
 ];
 
 function NavMenu() {
 	const { data: session } = authClient.useSession();
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+	const pathname = usePathname();
 
 	const signIn = async () => {
 		const data = await authClient.signIn.social({
@@ -57,23 +56,28 @@ function NavMenu() {
 	};
 
 	return (
-		<div className="flex flex-row items-center gap-3 md:gap-0">
-			<div className="hidden md:flex items-center justify-between gap-5 mr-4">
+		<div className="flex flex-row items-center">
+			<div className="hidden md:flex items-center justify-between gap-4 mr-4">
 				{MenuItem.map((item) => {
 					return (
 						<Link
-							href={`${item?.link}`}
+							href={`/${item?.link}`}
 							key={item?.nama}
-							className="hover:text-primary font-semibold">
+							className={`${pathname.split("/")[1] === item?.link && "text-primary"} hover:text-primary font-semibold`}>
 							{item?.nama}
 						</Link>
 					);
 				})}
 			</div>
 
+			<CartSheet />
+
+			{/* mobile drawer */}
 			<Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
 				<DrawerTrigger className="md:hidden block">
-					<MenuIcon />
+					<Button variant={"ghost"} size={"icon-sm"}>
+						<MenuIcon />
+					</Button>
 				</DrawerTrigger>
 				<DrawerContent>
 					<DrawerHeader>
@@ -83,7 +87,7 @@ function NavMenu() {
 									href={`${item?.link}`}
 									key={item?.nama}
 									onClick={() => setOpenDrawer(false)}
-									className="hover:text-primary transition py-1.5">
+									className={`${pathname.split("/")[1] === item?.link && "text-primary"} transition py-1.5`}>
 									{item?.nama}
 								</Link>
 							);

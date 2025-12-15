@@ -19,6 +19,8 @@ function Navbar() {
 					/>
 					<span>Teh Tubruk DJ</span>
 				</Link>
+
+				{/* navigasi menu item */}
 				<NavMenu />
 			</MaxWidth>
 		</nav>

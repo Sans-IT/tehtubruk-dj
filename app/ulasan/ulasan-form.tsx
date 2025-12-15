@@ -72,7 +72,7 @@ export default function UlasanForm() {
 		<div>
 			{/* FORM ULASAN */}
 			{!session.data ? (
-				<p className="text-muted-foreground text-lg">
+				<p className="text-muted-foreground text-md mb-6">
 					Anda harus
 					<span
 						onClick={signIn}

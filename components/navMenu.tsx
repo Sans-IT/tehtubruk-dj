@@ -20,26 +20,7 @@ import {
 } from "./ui/dropdown-menu";
 import { usePathname } from "next/navigation";
 import { CartSheet } from "./cart-sheet";
-
-const MenuItem = [
-	{
-		nama: "Tentang",
-		link: "tentang",
-	},
-	{
-		nama: "Menu",
-		link: "menu",
-	},
-	{
-		nama: "Ulasan",
-		link: "ulasan",
-	},
-	,
-	{
-		nama: "Cabang",
-		link: "cabang",
-	},
-];
+import { MenuItem } from "@/lib/global-var";
 
 function NavMenu() {
 	const { data: session } = authClient.useSession();
@@ -74,7 +55,7 @@ function NavMenu() {
 
 			{/* mobile drawer */}
 			<Drawer open={openDrawer} onOpenChange={setOpenDrawer}>
-				<DrawerTrigger className="md:hidden block">
+				<DrawerTrigger className="md:hidden block sm:me-2">
 					<Button variant={"ghost"} size={"icon-sm"}>
 						<MenuIcon />
 					</Button>
@@ -104,7 +85,7 @@ function NavMenu() {
 			{/* login and dropdown button */}
 			<div>
 				{!session ? (
-					<Button onClick={signIn} className="hidden sm:block">
+					<Button onClick={signIn} className="hidden md:block">
 						Login
 					</Button>
 				) : (

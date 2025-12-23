@@ -1,3 +1,27 @@
+export const MenuItem = [
+	{
+		nama: "Tentang",
+		link: "tentang",
+	},
+	{
+		nama: "Menu",
+		link: "menu",
+	},
+	{
+		nama: "Ulasan",
+		link: "ulasan",
+	},
+	,
+	{
+		nama: "Cabang",
+		link: "cabang",
+	},
+	{
+		nama: "Order",
+		link: "order",
+	},
+];
+
 export const rupiah = (value: number) =>
 	new Intl.NumberFormat("id-ID", {
 		style: "currency",

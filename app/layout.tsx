@@ -24,6 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Teh Tubruk DJ",
 	description: "gerai no 1 teh tubruk dj di Gresik",
+	icons: "/logo.png",
 };
 
 export default function RootLayout({

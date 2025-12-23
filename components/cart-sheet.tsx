@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	Sheet,
 	SheetContent,
@@ -12,7 +12,9 @@ import {
 import { rupiah } from "@/lib/global-var";
 import { useCart } from "@/lib/use-cart";
 import {
+	ListOrderedIcon,
 	MinusIcon,
+	NotepadTextIcon,
 	PlusIcon,
 	ShoppingBagIcon,
 	ShoppingCart,
@@ -24,10 +26,11 @@ import { FaWhatsapp } from "react-icons/fa";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export function CartSheet() {
 	const [openDrawer, setOpenDrawer] = useState<boolean>(false);
-	const [hasEvent, setHasEvent] = useState<boolean>(false);
 	const cart = useCart();
 	const items = Object.values(cart.items);
 	const router = useRouter();
@@ -78,9 +81,6 @@ export function CartSheet() {
 							key={item.id}
 							className="flex justify-between items-center border-b pb-2">
 							<div className="relative">
-								<p className="text-xs absolute -top-5 -left-3 text-muted-foreground">
-									{i + 1}
-								</p>
 								<p className="font-medium">{item.nama}</p>
 								<p className="text-sm text-muted-foreground">
 									{rupiah(item.price)} × {item.qty}
@@ -111,44 +111,22 @@ export function CartSheet() {
 				{/* catatan CTA whatsapp */}
 				{items.length > 0 && (
 					<SheetFooter className="sticky bottom-0 bg-background pt-2">
-						<div className="space-y-2">
-							<p className="font-semibold">Total: {rupiah(total)}</p>
-
-							{/* acara || event */}
-							<div className="space-y-2">
-								<Label
-									htmlFor="event-name"
-									className="text-xs text-muted-foreground ">
-									Apa pemesananmu memiliki acara?
-									<span className="font-normal">(opsional)</span>
-								</Label>
-
-								<Input
-									id="event-name"
-									className="text-xs"
-									placeholder="catering, pernikahan, jumat berkah"
-								/>
-							</div>
-
-							{/* catatan */}
-							<div className="space-y-2">
-								<Label
-									htmlFor="catatan-belanja"
-									className="text-xs text-muted-foreground font-normal">
-									{`Tambahkan catatan*`}
-								</Label>
-								<Textarea
-									id="catatan-belanja"
-									rows={4}
-									className="resize-none max-h-6 text-xs"
-									placeholder={`"1 teh ori tanpa es"`}
-								/>
-							</div>
-							<Button className="w-full" size={"sm"}>
-								<FaWhatsapp />
-								Kirim Order via Whatsapp
+						<Link href={"/menu"}>
+							<Button
+								variant={"secondary"}
+								className="w-full"
+								onClick={() => setOpenDrawer(!openDrawer)}>
+								Tambah Menu
 							</Button>
-						</div>
+						</Link>
+						<Link href={"/order"}>
+							<Button
+								onClick={() => setOpenDrawer(!openDrawer)}
+								className="w-full">
+								<NotepadTextIcon />
+								Lihat Orderan
+							</Button>
+						</Link>
 					</SheetFooter>
 				)}
 

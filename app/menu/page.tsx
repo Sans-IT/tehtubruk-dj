@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import MaxWidthDiv from "@/components/maxWidthDiv";
 import MenuSection from "./menu-section";
 

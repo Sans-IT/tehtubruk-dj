@@ -119,7 +119,10 @@ function UlasanSection() {
 								: item.rating === Number(ratingFilter)
 						)
 						.map((item: ReviewWithUser) => (
-							<Card key={item.id} className="border-primary/20 h-full">
+							<Card
+								id={item.id}
+								key={item.id}
+								className="border-primary/20 h-full">
 								<CardContent className="flex flex-col justify-between h-full">
 									<div className="flex items-center justify-between">
 										<h3 className="font-semibold">
@@ -130,7 +133,7 @@ function UlasanSection() {
 										</h3>
 										{item.userId === session.data?.user.id && (
 											<div className="space-x-1.5">
-												<DeleteDialog item={item} />
+												<DeleteDialog item={item} session={session} />
 											</div>
 										)}
 									</div>
@@ -164,7 +167,13 @@ function UlasanSection() {
 }
 
 // delete komen
-const DeleteDialog = ({ item }: { item: ReviewWithUser }) => {
+const DeleteDialog = ({
+	item,
+	session,
+}: {
+	item: ReviewWithUser;
+	session: any;
+}) => {
 	const queryClient = useQueryClient();
 
 	const { mutate: deleteReview, isPending } = useMutation({
@@ -174,6 +183,7 @@ const DeleteDialog = ({ item }: { item: ReviewWithUser }) => {
 		},
 		onSuccess: () => {
 			queryClient.invalidateQueries({ queryKey: ["ulasan"] });
+			queryClient.invalidateQueries({ queryKey: ["my-review"] });
 		},
 	});
 	return (

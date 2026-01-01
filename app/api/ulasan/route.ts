@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
 	try {
 		const body = await req.json();
-		console.log("REQ BODY:", body);
 
 		if (!body.userId || !body.pesan || !body.rating) {
 			return NextResponse.json(
@@ -23,7 +22,6 @@ export async function POST(req: NextRequest) {
 
 		return NextResponse.json(review);
 	} catch (err) {
-		console.error("API ERROR:", err);
 		return NextResponse.json(
 			{ error: "Server Error — cek console" },
 			{ status: 500 }
@@ -31,22 +29,33 @@ export async function POST(req: NextRequest) {
 	}
 }
 
-export async function GET() {
-	try {
-		const reviews = await prisma.review.findMany({
-			orderBy: { createdAt: "desc" },
-			include: {
-				user: true,
-			},
-		});
+export async function GET(req: NextRequest) {
+	const { searchParams } = req.nextUrl;
+	const userId = searchParams.get("userid")?.toString();
 
-		return NextResponse.json(reviews);
+	try {
+		// jika tidak ada userId, return all reviews
+		if (!userId) {
+			const reviews = await prisma.review.findMany({
+				orderBy: { createdAt: "desc" },
+				include: {
+					user: true,
+				},
+			});
+
+			return NextResponse.json(reviews);
+		} else {
+			// cari review userId tertentu
+			const review = await prisma.review.findFirst({
+				where: { userId: userId },
+				include: {
+					user: true,
+				},
+			});
+			return NextResponse.json(review);
+		}
 	} catch (err) {
-		console.error("GET ERROR:", err);
-		return NextResponse.json(
-			{ error: "Gagal mengambil ulasan" },
-			{ status: 500 }
-		);
+		return NextResponse.json({ error: err }, { status: 500 });
 	}
 }
 

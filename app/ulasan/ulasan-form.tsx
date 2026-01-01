@@ -14,12 +14,13 @@ import { authClient } from "@/lib/auth-client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import { Review } from "../generated/prisma/client";
 import { StarRating } from "./star-rating";
+import { toast } from "sonner";
+import Link from "next/link";
 
 type UlasanFormValues = z.infer<typeof ulasanSchema>;
 
@@ -50,6 +51,24 @@ export default function UlasanForm() {
 		});
 	};
 
+	const { data: myReview, isLoading: isCheckingReview } = useQuery({
+		queryKey: ["my-review"],
+		queryFn: async () => {
+			const { data } = await axios.get<Review | null>(
+				`/api/ulasan?userid=${session.data?.user.id}`
+			);
+			return data; // bisa null atau Review
+		},
+		enabled: !!session.data?.user.id,
+		throwOnError(err) {
+			toast.error("Gagal memuat ulasan", {
+				description:
+					err?.message ?? "Terjadi kesalahan saat mengambil ulasan Anda",
+			});
+			return false;
+		},
+	});
+
 	const { mutate, isPending } = useMutation({
 		mutationFn: async (props: UlasanFormValues) => {
 			const { data } = await axios.post<Review>("/api/ulasan", {
@@ -65,6 +84,7 @@ export default function UlasanForm() {
 
 			// refresh list ulasan
 			queryClient.invalidateQueries({ queryKey: ["ulasan"] });
+			queryClient.invalidateQueries({ queryKey: ["my-review"] });
 		},
 	});
 
@@ -81,6 +101,20 @@ export default function UlasanForm() {
 					</span>
 					terlebih dahulu untuk menulis ulasan.
 				</p>
+			) : isCheckingReview ? (
+				<p className="text-muted-foreground">Memeriksa ulasan Anda...</p>
+			) : myReview ? (
+				<div className="flex justify-between border rounded-md p-4 bg-primary my-5 text-muted">
+					<div>
+						<p className="font-semibold mb-1">
+							Anda sudah mengirim ulasan ⭐ {myReview.rating}/5
+						</p>
+						<p className="text-sm">"{myReview.pesan}"</p>
+					</div>
+					<Link href={`#${myReview.id}`} className="text-muted/80 underline">
+						lihat komentarku
+					</Link>
+				</div>
 			) : (
 				<Form {...form}>
 					<form

@@ -56,26 +56,13 @@ function AboutUs() {
 						className="mx-auto h-[400px] object-contain rounded-lg shadow-lg"
 					/>
 					<p className="text-lg text-gray-700 leading-relaxed">
-						<span className="font-semibold">Teh Tubruk DJ</span> adalah UMKM
-						yang menghadirkan kesegaran minuman es teh yang diracik dari
-						bahan-bahan alami berkualitas. Kami percaya bahwa setiap gelas es
-						teh mampu memberikan kebahagiaan, kesegaran, dan semangat baru untuk
-						dinikmati kapan saja.
+						Tentang Teh Tubruk DJ Teh Tubruk DJ menghadirkan cita rasa khas teh
+						tubruk tradisional dengan sensasi aroma yang kuat dan rasa yang
+						menenangkan. Diracik dengan daun pilihan sehingga memberikan
+						kenikmatan dalam setiap gelas.memiliki berbagai varian menu yang
+						unik dan khas dengan berbagai pilihan,konsumen dapat merasakan
+						kenikmatan berbagai varian dengan harga yang terjangkau
 					</p>
-					<p className="text-lg text-gray-700 leading-relaxed">
-						Semua varian es teh kami dibuat dengan penuh perhatian, memadukan
-						cita rasa daun teh pilihan dan bahan alami yang menyegarkan. Dari
-						rasa klasik yang sederhana hingga kombinasi unik, setiap tegukan
-						dirancang untuk memanjakan lidah Anda.
-					</p>
-					<p className="text-lg text-gray-700 leading-relaxed">
-						Dengan semangat inovasi dan pelayanan terbaik,{" "}
-						<span className="font-semibold">Teh Tubruk DJ</span> terus berupaya
-						memberikan pengalaman minum es teh yang tak terlupakan. Kami hadir
-						untuk melengkapi setiap momen Anda, mulai dari waktu santai hingga
-						kebersamaan bersama keluarga dan teman.
-					</p>
-					<Button size={"lg"}>Pelajari Lebih Lanjut</Button>
 				</div>
 			</MaxWidthDiv>
 		</div>

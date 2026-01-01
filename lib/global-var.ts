@@ -1,5 +1,9 @@
 export const MenuItem = [
 	{
+		nama: "Beranda",
+		link: "",
+	},
+	{
 		nama: "Tentang",
 		link: "tentang",
 	},

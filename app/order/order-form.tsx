@@ -182,7 +182,7 @@ function OrderForm() {
 						</div>
 					))}
 					<Link href={"/menu"}>
-						<Button className="w-full">
+						<Button className="w-full" variant={"outline"}>
 							<NotepadTextIcon />
 							Tambah Menu
 						</Button>

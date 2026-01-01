@@ -13,6 +13,7 @@ type CartStore = {
 	add: (item: CartItem) => void;
 	remove: (id: string) => void;
 	setQty: (id: string, qty: number) => void; // ✅
+	reset: () => void;
 };
 
 export const useCart = create<CartStore>()(
@@ -51,6 +52,7 @@ export const useCart = create<CartStore>()(
 
 				set({ items });
 			},
+			reset: () => set({ items: {} }),
 		}),
 		{
 			name: "cart-storage",

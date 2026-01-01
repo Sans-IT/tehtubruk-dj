@@ -101,11 +101,13 @@ const PendirianSection = () => {
 			<div className="flex flex-col gap-5 max-w-5xl mx-auto">
 				<h3 className="text-3xl font-bold">Awal didirikan Teh Tubruk</h3>
 				<p className="text-md sm:text-lg">
-					Teh Tubruk DJ didirikan pada tahun [tahun] di [lokasi], berawal dari
-					keinginan menghadirkan kembali cita rasa teh tubruk tradisional yang
-					kuat, aromatik, dan berkualitas. Dengan modal sederhana dan proses
-					rumahan, usaha ini berkembang berkat dukungan pelanggan hingga menjadi
-					UMKM dengan produk teh tubruk khas yang konsisten dan terpercaya.
+					Awal didirikan Teh Tubruk Teh Tubruk DJ didirikan pada tahun 2021 di
+					Desa Pranti berawal dari keinginan menghadirkan kembali cita rasa teh
+					tubruk tradisional yang kuat, aromatik, dan berkualitas. Dengan modal
+					sederhana dan proses rumahan, usaha ini berkembang berkat dukungan
+					pelanggan sehingga produk teh tubruk memiliki ciri khas yang berbeda
+					dan dapat memenuhi kebutuhan konsumen di sekitar desa bringkang daerah
+					Gresik
 				</p>
 			</div>
 		</section>

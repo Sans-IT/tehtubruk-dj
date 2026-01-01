@@ -10,7 +10,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "postgresql"  
 }
 
 model User {
@@ -25,7 +25,7 @@ model User {
   accounts      Account[]
 
   @@map("user")
-  reviews Review[]
+  review   Review?
 }
 
 model Session {
@@ -82,7 +82,7 @@ model Review {
   rating      Int       // 1–5  
 
   // Jika website memungkinkan user login
-  userId      String
+  userId      String    @unique
   user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime  @default(now())
 }

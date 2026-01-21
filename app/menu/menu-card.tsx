@@ -23,22 +23,24 @@ export default function MenuCard({ menu }: { menu: any }) {
 		<Card className="pt-0">
 			<CardHeader className="p-0 overflow-hidden rounded-md relative">
 				<Image
-					src={"/menu/lemon.jpg"}
-					alt={menu.price.toString()}
-					width={200}
+					src={menu.img}
+					alt={menu.nama}
+					width={400}
 					height={200}
 					className="w-full"
 				/>
 				<div className="absolute top-3 left-3 z-10 flex gap-2">
-					<Badge className="bg-rose-500 drop-shadow-md drop-shadow-rose-500/70 flex items-center gap-1">
-						<ThumbsUpIcon className="w-3 h-3" />
-						BestSeller
-					</Badge>
+					{menu.bestSeller && (
+						<Badge className="bg-rose-500 drop-shadow-md drop-shadow-rose-500/70 flex items-center gap-1">
+							<ThumbsUpIcon className="w-3 h-3" />
+							BestSeller
+						</Badge>
+					)}
 
-					<Badge className="bg-primary drop-shadow-md drop-shadow-primary flex items-center gap-1">
+					{/* <Badge className="bg-primary drop-shadow-md drop-shadow-primary flex items-center gap-1">
 						<StarIcon className="w-3 h-3" />
 						Favorit
-					</Badge>
+					</Badge> */}
 				</div>
 			</CardHeader>
 			<CardContent>

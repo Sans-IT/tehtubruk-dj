@@ -4,6 +4,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Metadata } from "next";
 import MaxWidthDiv from "@/components/maxWidthDiv";
+import { noTelp } from "@/lib/global-var";
 
 export const metadata: Metadata = {
 	title: "Cabang Teh Tubruk DJ | Temukan Lokasi Kami",
@@ -44,44 +45,9 @@ export const metadata: Metadata = {
 function Cabang() {
 	const branches = [
 		{
-			city: "Surabaya",
-			address: "Jl. Kendangsari Utara No. 20, Surabaya, Jawa Timur",
-			contact: "08912374414",
-		},
-		{
-			city: "Jakarta",
-			address: "Jl. Sudirman No. 50, Jakarta Pusat, DKI Jakarta",
-			contact: "08123456789",
-		},
-		{
-			city: "Bandung",
-			address: "Jl. Setiabudi No. 80, Bandung, Jawa Barat",
-			contact: "08198765432",
-		},
-		{
-			city: "Yogyakarta",
-			address: "Jl. Malioboro No. 25, Yogyakarta, DI Yogyakarta",
-			contact: "08512345678",
-		},
-		{
-			city: "Malang",
-			address: "Jl. Ijen Boulevard No. 12, Malang, Jawa Timur",
-			contact: "083456789012",
-		},
-		{
-			city: "Denpasar",
-			address: "Jl. Sunset Road No. 15, Denpasar, Bali",
-			contact: "087654321098",
-		},
-		{
-			city: "Medan",
-			address: "Jl. Diponegoro No. 30, Medan, Sumatera Utara",
-			contact: "081987654321",
-		},
-		{
-			city: "Makassar",
-			address: "Jl. Pettarani No. 7, Makassar, Sulawesi Selatan",
-			contact: "082123456789",
+			city: "Gresik",
+			address: "Jalan bringkang no 76, Jawa Timur",
+			contact: noTelp,
 		},
 	];
 
@@ -102,7 +68,7 @@ function Cabang() {
 					{branches.map((branch, index) => (
 						<div
 							key={index}
-							className="bg-white shadow-lg rounded-lg p-6 flex flex-col gap-4 hover:shadow-xl transform hover:-translate-y-2 transition-all">
+							className="bg-white shadow-lg rounded-lg p-6 flex flex-col gap-4 hover:drop-shadow-xl drop-shadow-lg transform hover:scale-[101%] transition-all">
 							<div className="flex items-center gap-4">
 								<div className="p-4 bg-primary text-white rounded-full">
 									<MapPin className="w-8 h-8" />
@@ -114,7 +80,7 @@ function Cabang() {
 							<p className="text-gray-600">Alamat : {branch.address}</p>
 							<p className="text-gray-600">Telephone / WA : {branch.contact}</p>
 							<Link
-								href={"/"}
+								href={`https://wa.me/${noTelp}`}
 								className={`${buttonVariants({
 									size: "lg",
 								})} text-gray-600 font-semibold text-lg mt-auto`}>

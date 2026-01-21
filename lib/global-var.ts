@@ -26,6 +26,8 @@ export const MenuItem = [
 	},
 ];
 
+export const noTelp = "6282230005890";
+
 export const rupiah = (value: number) =>
 	new Intl.NumberFormat("id-ID", {
 		style: "currency",
@@ -39,29 +41,75 @@ export const menu_tubruk = [
 	{
 		kategori: "Menu sachet",
 		items: [
-			{ id: "sachet-teh-original", nama: "Teh Tubruk Original", price: 3000 },
-			{ id: "sachet-jeruk-peras", nama: "Jeruk Peras Jumbo", price: 5000 },
-			{ id: "sachet-jeruk-susu", nama: "Jeruk Susu Jumbo", price: 6000 },
-			{ id: "sachet-lemon-tea", nama: "Lemon Tea", price: 5000 },
-			{ id: "sachet-leci-tea", nama: "Leci Tea", price: 5000 },
-			{ id: "sachet-milo-tea", nama: "Milo Tea", price: 5000 },
-			{ id: "sachet-milk-tea", nama: "Milk Tea", price: 5000 },
-			{ id: "sachet-chocolatos", nama: "Chocolatos Tea", price: 6000 },
-			{ id: "sachet-matcha", nama: "Matcha Tea", price: 6000 },
-			{ id: "sachet-bengbeng", nama: "Bengbeng Tea", price: 6000 },
-			{ id: "sachet-cappucino", nama: "Cappucino Tea", price: 6000 },
-		],
-	},
-	{
-		kategori: "Menu bubuk",
-		items: [
-			{ id: "bubuk-strawberry", nama: "Teh Tubruk Strawberry", price: 6000 },
-			{ id: "bubuk-mangga", nama: "Teh Tubruk Mangga", price: 6000 },
-			{ id: "bubuk-lemon", nama: "Teh Tubruk Lemon", price: 6000 },
-			{ id: "bubuk-thaitea", nama: "Teh Tubruk Thaitea", price: 6000 },
-			{ id: "bubuk-melon", nama: "Teh Tubruk Melon", price: 6000 },
-			{ id: "bubuk-leci", nama: "Teh Tubruk Leci", price: 6000 },
-			{ id: "bubuk-matcha", nama: "Teh Tubruk Matcha", price: 6000 },
+			{
+				id: "sachet-teh-original",
+				img: "/menu/teh-original.jpg",
+				nama: "Teh Tubruk Original",
+				price: 3000,
+				bestSeller: true,
+			},
+			{
+				id: "sachet-jeruk-peras",
+				img: "/menu/jeruk-peras.jpg",
+				nama: "Jeruk Peras Jumbo",
+				price: 5000,
+				bestSeller: true,
+			},
+			{
+				id: "sachet-milk-tea",
+				img: "/menu/milk-tea.jpg",
+				nama: "Jeruk Susu Jumbo",
+				price: 6000,
+				bestSeller: true,
+			},
+			{
+				id: "sachet-lemon-tea",
+				img: "/menu/lemon-tea.jpg",
+				nama: "Lemon Tea",
+				price: 5000,
+			},
+			{
+				id: "sachet-leci-tea",
+				img: "/menu/leci-tea.jpg",
+				nama: "Leci Tea",
+				price: 5000,
+			},
+			{
+				id: "sachet-milo-tea",
+				img: "/menu/milo-tea.jpg",
+				nama: "Milo Tea",
+				price: 5000,
+			},
+			{
+				id: "sachet-milk-tea",
+				img: "/menu/milk-tea.jpg",
+				nama: "Milk Tea",
+				price: 5000,
+			},
+			{
+				id: "sachet-chocolatos",
+				img: "/menu/chocolatos-tea.jpg",
+				nama: "Chocolatos Tea",
+				price: 6000,
+			},
+			{
+				id: "sachet-matcha",
+				img: "/menu/matcha-tea.jpg",
+				nama: "Matcha Tea",
+				price: 6000,
+			},
+			{
+				id: "sachet-bengbeng",
+				img: "/menu/bengbeng-tea.jpg",
+				nama: "Bengbeng Tea",
+				price: 6000,
+			},
+			{
+				id: "sachet-cappucino",
+				img: "/menu/cappucino-tea.jpg",
+				nama: "Cappucino Tea",
+				price: 6000,
+			},
 		],
 	},
 ] as const;

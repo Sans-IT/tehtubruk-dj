@@ -1,4 +1,6 @@
 import MaxWidthDiv from "@/components/maxWidthDiv";
+import OrderCTASection from "@/components/order-cta-section";
+import TestimonialSection from "@/components/testimoni-section";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -9,6 +11,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import {
 	ArrowRight,
 	BadgeCheckIcon,
@@ -67,7 +70,7 @@ export default function Home() {
 								className={`${buttonVariants({
 									size: "lg",
 								})} sm:mx-0 mx-auto w-fit text-lg py-6`}
-								href={"/variant"}>
+								href={"/menu"}>
 								Lihat Varian Rasa
 								<ArrowRight />
 							</Link>
@@ -91,6 +94,10 @@ export default function Home() {
 			<BenefitSection />
 			{/* menu section */}
 			<MenuSection />
+			{/* testimonial section */}
+			<TestimonialSection />
+			{/* order cta section */}
+			<OrderCTASection />
 		</div>
 	);
 }
@@ -144,45 +151,39 @@ const BenefitSection = () => {
 const MenuSection = () => {
 	const menuItems = [
 		{
-			nama: "Teh Tubruk Original",
-			img: "ori",
-			harga: "Rp 10.000",
-			deskripsi: "Teh tubruk klasik dengan rasa autentik dan aroma yang kuat.",
-			bestseller: true,
+			img: "/menu/teh-original.jpg",
+			nama: "Es Teh Original",
+			harga: 3000,
+			deskripsi:
+				"Kesegaran teh tubruk asli dengan racikan khas yang pekat dan aroma yang menenangkan.",
+			bestSeller: true,
 		},
 		{
-			nama: "Teh Tubruk Mangga",
-			img: "mangga",
-			harga: "Rp 12.000",
+			img: "/menu/jeruk-peras.jpg",
+			nama: "Es Jeruk Peras Jumbo",
+			harga: 5000,
 			deskripsi:
-				"Teh tubruk dengan aroma mangga yang menyegarkan dan rasa manis alami.",
-			bestseller: false,
+				"Perasan jeruk asli pilihan dalam ukuran jumbo, kaya akan vitamin C dan sangat menyegarkan.",
+			bestSeller: true,
 		},
 		{
-			nama: "Teh Tubruk Anggur",
-			img: "anggur",
-			harga: "Rp 12.000",
+			img: "/menu/milk-tea.jpg",
+			nama: "Es Jeruk Susu Jumbo",
+			harga: 6000,
 			deskripsi:
-				"Teh tubruk dengan sentuhan rasa anggur yang segar dan nikmat.",
-			bestseller: false,
+				"Kombinasi unik kesegaran jeruk peras dengan kelembutan susu kental manis yang creamy.",
+			bestSeller: true,
 		},
 		{
-			nama: "Teh Tubruk Lemon",
-			img: "lemon",
-			harga: "Rp 12.000",
+			img: "/menu/cappucino-tea.jpg",
+			nama: "Good Day Cappucino Tea",
+			harga: 6000,
 			deskripsi:
-				"Teh tubruk dengan kesegaran lemon yang asam-manis, cocok diminum kapan saja.",
-			bestseller: false,
-		},
-		{
-			nama: "Teh Tubruk Leci",
-			img: "leci",
-			harga: "Rp 12.000",
-			deskripsi:
-				"Teh tubruk dengan aroma leci yang manis dan lembut, memberikan sensasi segar di setiap tegukan.",
-			bestseller: true,
+				"Paduan kopi cappucino yang mantap dengan sensasi teh, menciptakan rasa yang unik dan modern.",
+			bestSeller: true,
 		},
 	];
+
 	return (
 		<section className="bg-linear-to-b from-primary to-primary-dark text-muted py-20 text-center text-balance px-2.5">
 			<MaxWidthDiv className="gap-5 sm:max-w-6xl grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1">
@@ -193,14 +194,14 @@ const MenuSection = () => {
 					return (
 						<Card key={index}>
 							<CardHeader className="relative">
-								{item.bestseller && (
+								{item.bestSeller && (
 									<Badge className="absolute top-3 left-10 z-10 bg-red-500">
 										<ThumbsUpIcon />
 										BestSeller
 									</Badge>
 								)}
 								<Image
-									src={`/menu/${item.img}.jpg`}
+									src={`${item.img}`}
 									alt={item.nama}
 									className="w-full"
 									width={500}
@@ -211,9 +212,10 @@ const MenuSection = () => {
 								<CardTitle>{item.nama}</CardTitle>
 								<CardDescription>{item.deskripsi}</CardDescription>
 							</CardContent>
-							<CardFooter className="flex justify-between">
-								<CardTitle>{item.harga}</CardTitle>
-								<Button>Beli</Button>
+							<CardFooter className="flex justify-between mt-auto">
+								<Link href="/menu" className={cn(buttonVariants(), "w-full")}>
+									Beli
+								</Link>
 							</CardFooter>
 						</Card>
 					);

@@ -5,15 +5,17 @@ import { Geist, Geist_Mono, Berkshire_Swash } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/components/QueryProvider";
 
+// Menginisialisasi Font Geist Sans
 const geistSans = Geist({
 	variable: "--font-geist-sans",
 	subsets: ["latin"],
 });
 
-const bershireSwash = Berkshire_Swash({
+// Perbaikan nama variabel: berkshireSwash (tambah huruf 'k')
+const berkshireSwash = Berkshire_Swash({
 	variable: "--font-berkshire-swash",
 	subsets: ["latin"],
-	weight: "400",
+	weight: "400", // Berkshire Swash hanya mendukung weight 400
 });
 
 const geistMono = Geist_Mono({
@@ -35,10 +37,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} ${bershireSwash.variable} antialiased`}>
+				className={`${geistSans.variable} ${geistMono.variable} ${berkshireSwash.variable} antialiased`}>
 				<QueryProvider>
 					<Navbar />
-					{children}
+					<main>{children}</main>
 					<Footer />
 				</QueryProvider>
 			</body>

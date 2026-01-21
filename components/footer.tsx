@@ -1,7 +1,8 @@
-import { MapPin, Phone, Instagram, Facebook, Twitter } from "lucide-react";
-import React from "react";
-import MaxWidthDiv from "./maxWidthDiv";
+import { Instagram, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { FaTiktok, FaWhatsapp } from "react-icons/fa";
+import MaxWidthDiv from "./maxWidthDiv";
+import { noTelp } from "@/lib/global-var";
 
 function Footer() {
 	return (
@@ -31,20 +32,25 @@ function Footer() {
 							<div className="flex flex-col">
 								<h3 className="text-primary font-semibold">Alamat</h3>
 								<p className="group-hover:text-primary">
-									Jl. Kendangsari Utara No. 20, Surabaya
+									Jalan desa pranti ,perumahan graha menganti
 								</p>
 							</div>
 						</li>
 
 						{/* No Telp */}
-						<li className="flex gap-3 group">
-							<div className="rounded-full border-2 border-black p-2 w-12 h-12 flex items-center justify-center">
-								<Phone className="group-hover:text-primary w-6 h-6" />
-							</div>
-							<div className="flex flex-col">
-								<h3 className="text-primary font-semibold">No Telp / WA</h3>
-								<p className="group-hover:text-primary">0891-2374-414</p>
-							</div>
+						<li>
+							<Link
+								href={`https://wa.me/${noTelp}`}
+								target="_blank"
+								className="flex gap-3 group">
+								<div className="rounded-full border-2 border-black p-2 w-12 h-12 flex items-center justify-center">
+									<FaWhatsapp className="group-hover:text-primary w-6 h-6" />
+								</div>
+								<div className="flex flex-col">
+									<h3 className="text-primary font-semibold">No Telp / WA</h3>
+									<p className="group-hover:text-primary">0822-3000-5890</p>
+								</div>
+							</Link>
 						</li>
 					</ul>
 
@@ -56,21 +62,15 @@ function Footer() {
 
 						<div className="flex flex-col gap-4">
 							<Link
-								href="#"
-								className="flex items-center gap-2 text-gray-700 hover:text-primary hover:scale-105 transition">
+								href="https://www.instagram.com/tehtubrukdj"
+								className="flex items-center gap-2 text-gray-700 hover:text-primary transition">
 								<Instagram size={22} /> Instagram
 							</Link>
 
 							<Link
-								href="#"
-								className="flex items-center gap-2 text-gray-700 hover:text-primary hover:scale-105 transition">
-								<Facebook size={22} /> Facebook
-							</Link>
-
-							<Link
-								href="#"
-								className="flex items-center gap-2 text-gray-700 hover:text-primary hover:scale-105 transition">
-								<Twitter size={22} /> X / Twitter
+								href="https://www.tiktok.com/@tehtubruk.dj"
+								className="flex items-center gap-2 text-gray-700 hover:text-primary transition">
+								<FaTiktok size={22} /> Tiktok
 							</Link>
 						</div>
 					</div>
@@ -78,7 +78,13 @@ function Footer() {
 			</MaxWidthDiv>
 
 			<div className="w-full bg-black py-2 text-white text-center text-sm">
-				© {new Date().getFullYear()} Teh Tubruk DJ — Surabaya
+				© {new Date().getFullYear()} Teh Tubruk DJ made by{" "}
+				<Link
+					href="https://jayaprinting.vercel.app/"
+					className="hover:underline font-semibold"
+					target="_blank">
+					Jayaprinting
+				</Link>
 			</div>
 		</div>
 	);

@@ -49,7 +49,7 @@ function AboutUs() {
 						Tentang Kami
 					</h2>
 					<Image
-						src="/images.jpg"
+						src="/tentang.jpg"
 						alt="About Us"
 						width={800}
 						height={400}

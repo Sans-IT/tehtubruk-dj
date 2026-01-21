@@ -12,7 +12,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { rupiah } from "@/lib/global-var";
+import { noTelp, rupiah } from "@/lib/global-var";
 import { useCart } from "@/lib/use-cart";
 import { MinusIcon, NotepadTextIcon, PlusIcon, XIcon } from "lucide-react";
 import Link from "next/link";
@@ -28,7 +28,7 @@ function OrderForm() {
 	const items = Object.values(cart.items);
 	const total = items.reduce((sum, item) => sum + item.qty * item.price, 0);
 
-	const phone = "6285814162973";
+	const phone = "6282230005890";
 
 	const waText = encodeURIComponent(
 		`Halo, saya mau order Teh Tubruk DJ 👋\n\n` +
@@ -96,11 +96,9 @@ function OrderForm() {
 							<SelectContent>
 								<SelectGroup>
 									<SelectLabel id="pilih-cabang">Pilih pengambilan</SelectLabel>
-									<SelectItem value="apple">Apple</SelectItem>
-									<SelectItem value="banana">Banana</SelectItem>
-									<SelectItem value="blueberry">Blueberry</SelectItem>
-									<SelectItem value="grapes">Grapes</SelectItem>
-									<SelectItem value="pineapple">Pineapple</SelectItem>
+									<SelectItem value="Jalan bringkang no 76">
+										Jalan bringkang no 76
+									</SelectItem>
 								</SelectGroup>
 							</SelectContent>
 						</Select>
@@ -198,7 +196,7 @@ function OrderForm() {
 					<div className="text-muted-foreground text-sm"></div>
 				</div>
 				<Button className="w-full gap-2" asChild>
-					<a href={`https://wa.me/${phone}?text=${waText}`} target="_blank">
+					<a href={`https://wa.me/${noTelp}?text=${waText}`} target="_blank">
 						<FaWhatsapp />
 						Kirim Order via WhatsApp
 					</a>

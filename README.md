@@ -17,7 +17,7 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 # Front end
 
 - [x] Navbar
-- [ ] halaman
+- [x] halaman
 - [x] Footer
 
 ## halaman
@@ -26,10 +26,9 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 
 - [x] header hero section
 - [x] kenapa memilih teh tubruk
-- [ ] cabang
-- [ ] apa kata pelanggan
-- [ ] CTA whatsapp
-- [ ] animasi / percantik UI
+- [x] apa kata pelanggan
+- [x] CTA whatsapp
+- [x] animasi / percantik UI
 
 #### tentang
 
@@ -46,13 +45,12 @@ website umkm es teh tubruk dj dibuat oleh **JAYAPRINTING** untuk customer tercin
 - [x] rating
 - [x] input user
 - [x] sesi komentar
-- [ ] CTA WhatsApp
 
 #### cabang
 
 - [x] tombol arah gmap lokasi dan no telp ( jika ada )
 
-#### mitra/franchise
+#### mitra/franchise (optional)
 
 - [ ] paket franchise dan harga per paket
 

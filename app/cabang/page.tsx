@@ -7,10 +7,12 @@ import MaxWidthDiv from "@/components/maxWidthDiv";
 import { noTelp } from "@/lib/global-var";
 
 export const metadata: Metadata = {
-	title: "Cabang Teh Tubruk DJ | Temukan Lokasi Kami",
+	title: "Lokasi Cabang",
 	description:
-		"Kunjungi cabang Teh Tubruk DJ terdekat di berbagai kota seperti Surabaya, Jakarta, Bandung, dan lainnya. Nikmati kesegaran teh alami di lokasi kami.",
+		"Cari gerai Teh Tubruk DJ terdekat di Gresik dan sekitarnya. Cek jam operasional dan rute lokasi di sini.",
 	keywords: [
+		"Teh Tubruk DJ Terdekat",
+		"Lokasi Teh Tubruk Gresik",
 		"Cabang Teh Tubruk DJ",
 		"Lokasi Teh Tubruk DJ",
 		"Teh Tubruk DJ Surabaya",
@@ -19,26 +21,9 @@ export const metadata: Metadata = {
 		"Minuman Teh Alami",
 	],
 	openGraph: {
-		title: "Cabang Teh Tubruk DJ | Temukan Lokasi Kami",
-		description:
-			"Cari tahu lokasi cabang Teh Tubruk DJ di seluruh Indonesia. Nikmati minuman teh alami di kota Anda.",
-		url: "https://www.tehdaun.com/cabang",
-		images: [
-			{
-				url: "/images/cabang/cabang-tehdaun.jpg", // Ganti dengan gambar representatif
-				width: 1200,
-				height: 630,
-				alt: "Cabang Teh Tubruk DJ",
-			},
-		],
-		type: "website",
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Cabang Teh Tubruk DJ | Temukan Lokasi Kami",
-		description:
-			"Temukan cabang Teh Tubruk DJ terdekat dan nikmati kesegaran alami teh berkualitas tinggi.",
-		images: ["/images/cabang/cabang-tehdaun.jpg"], // Ganti sesuai gambar
+		title: "Lokasi Cabang Teh Tubruk DJ",
+		description: "Kunjungi gerai kami di berbagai titik strategis di Gresik.",
+		images: ["/cabang/og-cabang.jpg"],
 	},
 };
 
@@ -52,7 +37,7 @@ function Cabang() {
 	];
 
 	return (
-		<section className="bg-primary-foreground py-12">
+		<section className="py-12">
 			<MaxWidthDiv>
 				<div className="text-center mb-8">
 					<h1 className="text-4xl font-bold text-primary font-berkshire">

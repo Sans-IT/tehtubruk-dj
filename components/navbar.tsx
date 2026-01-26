@@ -11,11 +11,10 @@ function Navbar() {
 					className="text-2xl text-primary font-bold flex items-center gap-2.5"
 					href={"/"}>
 					<Image
-						src="/logo.png"
+						src="/logo-black.svg"
 						alt="Logo Teh Tubruk DJ"
 						width={40}
 						height={40}
-						className="invert sepia saturate-300 hue-rotate-100 brightness-90 contrast-100"
 					/>
 					<span>Teh Tubruk DJ</span>
 				</Link>

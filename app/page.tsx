@@ -2,7 +2,7 @@ import MaxWidthDiv from "@/components/maxWidthDiv";
 import OrderCTASection from "@/components/order-cta-section";
 import TestimonialSection from "@/components/testimoni-section";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -12,15 +12,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import {
-	ArrowRight,
-	BadgeCheckIcon,
-	Coffee,
-	CupSoda,
-	FireExtinguisherIcon,
-	Leaf,
-	ThumbsUpIcon,
-} from "lucide-react";
+import { ArrowRight, Coffee, CupSoda, Leaf, ThumbsUpIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -79,8 +71,8 @@ export default function Home() {
 							<Image
 								width="500"
 								height="500"
-								src="/banner.jpg"
-								alt="Teh Daun"
+								src="/banner.webp"
+								alt="Teh TubrukDJ Banner"
 								className="w-full"
 							/>
 						</div>

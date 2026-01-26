@@ -1,7 +1,7 @@
 export const MenuItem = [
 	{
 		nama: "Beranda",
-		link: "",
+		link: "/",
 	},
 	{
 		nama: "Tentang",

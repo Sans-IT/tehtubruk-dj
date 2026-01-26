@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 		url: "https://www.tehdaun.com/about-us",
 		images: [
 			{
-				url: "/images/about-us/about-us.jpg", // Ganti dengan gambar representatif
+				url: "/tentang/og-tentang.jpg", // Ganti dengan gambar representatif
 				width: 1200,
 				height: 630,
 				alt: "Tentang Teh Tubruk DJ",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 		title: "Tentang Kami | Teh Tubruk DJ",
 		description:
 			"Pelajari lebih lanjut tentang Teh Tubruk DJ, UMKM yang menghadirkan kesegaran es teh alami dan pengalaman minum yang tak terlupakan.",
-		images: ["/images/about-us/about-us.jpg"], // Ganti sesuai gambar
+		images: ["/tentang/og-tentang.jpg"], // Ganti sesuai gambar
 	},
 };
 
@@ -49,7 +49,7 @@ function AboutUs() {
 						Tentang Kami
 					</h2>
 					<Image
-						src="/tentang.jpg"
+						src="/tentang/og-tentang.jpg"
 						alt="About Us"
 						width={800}
 						height={400}

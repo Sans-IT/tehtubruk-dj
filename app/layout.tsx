@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google"; // Import Google Font
 import "./globals.css";
 import QueryProvider from "@/components/QueryProvider";
+import Script from "next/script";
 
 // Menginisialisasi Font Geist Sans
 const poppins = Poppins({
@@ -83,6 +84,32 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+			<Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4087021836796600"
+crossOrigin="anonymous"></Script>
+
+			<Script
+				id="schema-org"
+				type="application/ld+json"
+				strategy="afterInteractive"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+					"@context": "https://schema.org",
+					"@type": "FoodEstablishment", // cocok buat gerai minuman
+					"name": "Teh Tubruk DJ",
+					"url": "https://tehtubrukdj.com",
+					"logo": "https://tehtubrukdj.com/og-logo-full.jpg",
+					"image": "https://tehtubrukdj.com/og-logo-full.jpg",
+					"description":
+						"Gerai Teh Tubruk No. 1 dengan cita rasa tradisional otentik.",
+					"address": {
+						"@type": "PostalAddress",
+						"addressCountry": "ID"
+					}
+					}),
+				}}
+    		/>
+			</head>
 			<body className={`${poppins.variable} antialiased`}>
 				<QueryProvider>
 					<Navbar />

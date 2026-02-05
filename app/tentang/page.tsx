@@ -53,7 +53,7 @@ function AboutUs() {
 						alt="About Us"
 						width={800}
 						height={400}
-						className="mx-auto h-[400px] object-contain rounded-lg shadow-lg"
+						className="mx-auto h-full object-contain rounded-lg shadow-lg"
 					/>
 					<p className="text-lg text-gray-700 leading-relaxed">
 						Tentang Teh Tubruk DJ Teh Tubruk DJ menghadirkan cita rasa khas teh
